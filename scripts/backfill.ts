@@ -14,13 +14,20 @@ interface Config {
 }
 
 const config: Config = {
-  startDate: "2025-01-01",
+  // ✅ Now covers 2024 and 2025
+  startDate: "2024-01-01",
   endDate: "2025-11-14",
+
+  // Base commits per week (before month weighting)
   baseMinCommitsPerWeek: 3,
-  baseMaxCommitsPerWeek: 8,
-  maxCommitsPerDay: 3,
+  baseMaxCommitsPerWeek: 10, // allow more weeks to be busier
+
+  // ✅ Allow up to 6 commits per day (so 3, 2, 5... are possible)
+  maxCommitsPerDay: 6,
+
   repoPath: process.cwd(),
   activityFile: "src/activity-log.ts",
+
   // 1 = normal, >1 = more active, <1 = quieter
   monthlyActivityWeights: {
     "1": 0.8,  // Jan  - slightly quieter
@@ -28,13 +35,13 @@ const config: Config = {
     "3": 1.0,  // Mar  - baseline
     "4": 1.1,  // Apr  - more active
     "5": 1.2,  // May
-    "6": 1.3,  // Jun  - very active
-    "7": 1.2,  // Jul
-    "8": 1.1,  // Aug
+    "6": 1.4,  // Jun  - very active
+    "7": 1.4,  // Jul  - very active
+    "8": 1.2,  // Aug
     "9": 1.0,  // Sep
     "10": 0.9, // Oct
-    "11": 0.8, // Nov (until 14th)
-    "12": 0.6, // Dec (not used here, but defined)
+    "11": 0.8, // Nov
+    "12": 0.6, // Dec (in case you extend later)
   },
 };
 
@@ -80,7 +87,7 @@ function ensureActivityFile(path: string) {
  */
 
 export interface ActivityEntry {
-  date: string;      // ISO date like 2025-01-01
+  date: string;      // ISO date like 2024-01-01
   message: string;   // short description
 }
 
@@ -108,7 +115,7 @@ function addActivityEntry(path: string, date: string, message: string) {
   writeFileSync(path, newContent, { encoding: "utf8" });
 }
 
-// --- extra TS file touches (optional) ----------------------------------------
+// --- extra TS file touches ---------------------------------------------------
 
 function ensureDirForFile(path: string) {
   const dir = dirname(path);
@@ -201,9 +208,13 @@ const activityPhrases = [
   "Incremental improvement, nothing big.",
 ];
 
+// function randomItem<T>(arr: T[]): T {
+//   return arr[Math.floor(Math.random() * arr.length)];
+// }
 function randomItem<T>(arr: readonly T[]): T {
   return arr[Math.floor(Math.random() * arr.length)];
 }
+
 function randomInt(min: number, max: number): number {
   // inclusive range
   return min + Math.floor(Math.random() * (max - min + 1));
@@ -243,13 +254,9 @@ function createCommitForDate(date: Date, index: number) {
   const activityMessage = buildActivityMessage(date, index);
   const activityFilePath = join(config.repoPath, config.activityFile);
 
-  // 1) update the activity log
   addActivityEntry(activityFilePath, dayStr, activityMessage);
-
-  // 2) touch an extra helper file so each commit has slightly different TS content
   touchDailyHelperFile(date, index);
 
-  // 3) stage and commit with backdated env vars
   runGit(`add .`);
   const commitEnv: NodeJS.ProcessEnv = {
     ...process.env,
@@ -283,14 +290,12 @@ function main() {
     weeks[key].push(date);
   }
 
-  // 2) Plan commits for each week
   const weekKeys = Object.keys(weeks).sort();
 
   for (const weekKey of weekKeys) {
     const dates = weeks[weekKey].sort((a, b) => a.getTime() - b.getTime());
     if (dates.length === 0) continue;
 
-    // Determine activity multiplier from month of first date in the week
     const firstDate = dates[0];
     const month = String(firstDate.getMonth() + 1);
     const weight = config.monthlyActivityWeights[month] ?? 1;
@@ -315,7 +320,6 @@ function main() {
       )}): planning ${commitsThisWeek} commit(s) ===`
     );
 
-    // 3) Decide how many commits go to each day in this week
     type DayPlan = { date: Date; count: number };
     const plan: DayPlan[] = dates.map((d) => ({ date: d, count: 0 }));
 
@@ -333,7 +337,6 @@ function main() {
       plan[idx].count++;
     }
 
-    // 4) Create the actual commits according to the plan
     for (const dayPlan of plan) {
       if (dayPlan.count === 0) continue;
 
@@ -343,8 +346,7 @@ function main() {
 
       for (let i = 1; i <= dayPlan.count; i++) {
         const commitDate = new Date(dayPlan.date.getTime());
-        // Random time within the day (10:00–17:59)
-        commitDate.setHours(10 + Math.floor(Math.random() * 8));
+        commitDate.setHours(10 + Math.floor(Math.random() * 8)); // 10–17
         commitDate.setMinutes(Math.floor(Math.random() * 60));
 
         createCommitForDate(commitDate, i);
