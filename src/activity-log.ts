@@ -349,4 +349,5 @@ export const activityLog: ActivityEntry[] = [
   { date: "2024-04-03", message: "[2024-04-03 #1] Tweaked typings for better safety. (module: utils)." },
   { date: "2024-04-03", message: "[2024-04-03 #2] Tweaked typings for better safety. (module: utils)." },
   { date: "2024-04-03", message: "[2024-04-03 #3] Made a minor internal change. (module: settings)." },
+  { date: "2024-04-05", message: "[2024-04-05 #1] Cleaned up a few details. (module: routing)." },
 ];
