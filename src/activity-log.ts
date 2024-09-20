@@ -534,4 +534,5 @@ export const activityLog: ActivityEntry[] = [
   { date: "2024-09-16", message: "[2024-09-16 #1] Added a tiny helper for reuse. (module: analytics)." },
   { date: "2024-09-19", message: "[2024-09-19 #1] Added a tiny helper for reuse. (module: notifications)." },
   { date: "2024-09-19", message: "[2024-09-19 #2] Tweaked typings for better safety. (module: api-client)." },
+  { date: "2024-09-20", message: "[2024-09-20 #1] Added a tiny helper for reuse. (module: utils)." },
 ];
