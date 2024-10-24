@@ -577,4 +577,5 @@ export const activityLog: ActivityEntry[] = [
   { date: "2024-10-20", message: "[2024-10-20 #1] Did a small refactor for clarity. (module: settings)." },
   { date: "2024-10-20", message: "[2024-10-20 #2] Tweaked typings for better safety. (module: api-client)." },
   { date: "2024-10-23", message: "[2024-10-23 #1] Added a tiny helper for reuse. (module: settings)." },
+  { date: "2024-10-24", message: "[2024-10-24 #1] Improved some internal docs. (module: routing)." },
 ];
