@@ -10,4 +10,5 @@ export interface ActivityEntry {
 
 export const activityLog: ActivityEntry[] = [
   // entries will be appended here by the backfill script
+  { date: "2025-01-03", message: "[2025-01-03 #1] Tweaked typings for better safety. (module: user-profile)." },
 ];
