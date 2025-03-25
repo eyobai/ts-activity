@@ -70,4 +70,5 @@ export const activityLog: ActivityEntry[] = [
   { date: "2025-03-20", message: "[2025-03-20 #1] Cleaned up a few details. (module: auth)." },
   { date: "2025-03-22", message: "[2025-03-22 #1] Did a small refactor for clarity. (module: settings)." },
   { date: "2025-03-24", message: "[2025-03-24 #1] Cleaned up a few details. (module: settings)." },
+  { date: "2025-03-25", message: "[2025-03-25 #1] Cleaned up a few details. (module: notifications)." },
 ];
