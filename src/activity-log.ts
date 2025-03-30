@@ -72,4 +72,5 @@ export const activityLog: ActivityEntry[] = [
   { date: "2025-03-24", message: "[2025-03-24 #1] Cleaned up a few details. (module: settings)." },
   { date: "2025-03-25", message: "[2025-03-25 #1] Cleaned up a few details. (module: notifications)." },
   { date: "2025-03-27", message: "[2025-03-27 #1] Added a tiny helper for reuse. (module: analytics)." },
+  { date: "2025-03-30", message: "[2025-03-30 #1] Added a tiny helper for reuse. (module: user-profile)." },
 ];
