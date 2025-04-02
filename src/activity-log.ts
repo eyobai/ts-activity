@@ -75,4 +75,5 @@ export const activityLog: ActivityEntry[] = [
   { date: "2025-03-30", message: "[2025-03-30 #1] Added a tiny helper for reuse. (module: user-profile)." },
   { date: "2025-03-31", message: "[2025-03-31 #1] Cleaned up a few details. (module: settings)." },
   { date: "2025-04-02", message: "[2025-04-02 #1] Improved some internal docs. (module: notifications)." },
+  { date: "2025-04-02", message: "[2025-04-02 #2] Made a minor internal change. (module: user-profile)." },
 ];
