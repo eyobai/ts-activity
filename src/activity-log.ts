@@ -99,4 +99,5 @@ export const activityLog: ActivityEntry[] = [
   { date: "2025-04-24", message: "[2025-04-24 #2] Made a minor internal change. (module: utils)." },
   { date: "2025-04-28", message: "[2025-04-28 #1] Made a minor internal change. (module: auth)." },
   { date: "2025-04-29", message: "[2025-04-29 #1] Adjusted logic for consistency. (module: settings)." },
+  { date: "2025-05-01", message: "[2025-05-01 #1] Did a small refactor for clarity. (module: utils)." },
 ];
