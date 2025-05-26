@@ -771,4 +771,5 @@ export const activityLog: ActivityEntry[] = [
   { date: "2025-05-23", message: "[2025-05-23 #1] Touched a utility to support future work. (module: analytics)." },
   { date: "2025-05-23", message: "[2025-05-23 #2] Improved some internal docs. (module: api-client)." },
   { date: "2025-05-24", message: "[2025-05-24 #1] Polished a small part of the codebase. (module: analytics)." },
+  { date: "2025-05-26", message: "[2025-05-26 #1] Polished a small part of the codebase. (module: settings)." },
 ];
