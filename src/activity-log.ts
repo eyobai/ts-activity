@@ -895,4 +895,5 @@ export const activityLog: ActivityEntry[] = [
   { date: "2025-08-27", message: "[2025-08-27 #1] Cleaned up a few details. (module: dashboard)." },
   { date: "2025-08-27", message: "[2025-08-27 #2] Touched a utility to support future work. (module: dashboard)." },
   { date: "2025-08-27", message: "[2025-08-27 #3] Polished a small part of the codebase. (module: api-client)." },
+  { date: "2025-08-28", message: "[2025-08-28 #1] Polished a small part of the codebase. (module: settings)." },
 ];
