@@ -937,4 +937,5 @@ export const activityLog: ActivityEntry[] = [
   { date: "2025-10-10", message: "[2025-10-10 #2] Incremental improvement, nothing big. (module: notifications)." },
   { date: "2025-10-11", message: "[2025-10-11 #1] Tweaked typings for better safety. (module: utils)." },
   { date: "2025-10-12", message: "[2025-10-12 #1] Cleaned up a few details. (module: api-client)." },
+  { date: "2025-10-12", message: "[2025-10-12 #2] Polished a small part of the codebase. (module: user-profile)." },
 ];
