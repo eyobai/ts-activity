@@ -274,4 +274,5 @@ export const activityLog: ActivityEntry[] = [
   { date: "2025-11-04", message: "[2025-11-04 #1] Added a tiny helper for reuse. (module: routing)." },
   { date: "2025-11-05", message: "[2025-11-05 #1] Incremental improvement, nothing big. (module: auth)." },
   { date: "2025-11-06", message: "[2025-11-06 #1] Tweaked typings for better safety. (module: dashboard)." },
+  { date: "2025-11-08", message: "[2025-11-08 #1] Polished a small part of the codebase. (module: routing)." },
 ];
